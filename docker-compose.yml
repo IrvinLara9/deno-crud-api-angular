@@ -1,0 +1,14 @@
+services:
+  mongo:
+    image: mongo:8.0.4
+    container_name: deno-crud-mongo-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - deno-crud-mongo-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: mypassword
+
+volumes:
+  deno-crud-mongo-data:

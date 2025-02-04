@@ -1,0 +1,25 @@
+<h2>Fruit List</h2>
+
+<div class="form-container">
+  <input [(ngModel)]="newFruit.name" placeholder="Name" />
+  <input [(ngModel)]="newFruit.color" placeholder="Color" />
+  <input [(ngModel)]="newFruit.price" type="number" placeholder="Price" />
+  <button (click)="addOrUpdateFruit()">
+    {{ selectedFruit ? 'Update' : 'Add' }} Fruit
+  </button>
+  @if (selectedFruit) {
+    <button (click)="resetForm()" class="edit-btn">Cancel</button>
+  }
+</div>
+
+<ul class="fruit-list">
+  @for (fruit of fruits; track fruit._id) {
+    <li>
+      <span>{{ fruit.name }} - {{ fruit.color }} - ${{ fruit.price }}</span>
+      <div>
+        <button (click)="editFruit(fruit)" class="edit-btn">Edit</button>
+        <button (click)="deleteFruit(fruit._id!)" class="delete-btn">X</button>
+      </div>
+    </li>
+  }
+</ul>
